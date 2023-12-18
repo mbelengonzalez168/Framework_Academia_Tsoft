@@ -7,7 +7,7 @@ pipeline {
   environment {
     //TESTPLAN = "${params.TESTPLAN}"
     TESTPLAN = "PX-996"
-    TAG = "@TEST_PX-995"
+    TAG = "TEST_PX-995"
   }
   stages {
     stage('CleanWorkspace') {
