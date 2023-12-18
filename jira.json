@@ -1,0 +1,17 @@
+{
+     "fields": {
+        "project": {
+            "id": "10001",
+            "key": "PX"
+        },
+        "summary": "TITULOJSON",
+        "description": "Fallo al clonar",
+        "issuetype": {
+            "name": "Test Execution"
+        }
+    },
+
+    "xrayFields": {
+        "testPlanKey": "PX-1" 
+    }
+}
