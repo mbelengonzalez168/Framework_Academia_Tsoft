@@ -1,5 +1,9 @@
 Feature: test_richard
 
+	Background:
+		#@PRECOND_PX-997
+		Given Ingresar a google
+
 	@TEST_PX-995
 	Scenario: test_richard
 		When introduzco la palabra "Tsoft"
