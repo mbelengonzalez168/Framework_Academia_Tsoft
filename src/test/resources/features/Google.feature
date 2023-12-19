@@ -1,11 +1,7 @@
-Feature: Prueba-docker
+Feature: test_richard
 
-	Background:
-		#@PRECOND_XRAY-21
-		Given Ingresar a google
-
-	@TEST_PX-3
-	Scenario: Prueba-docker
+	@TEST_PX-995
+	Scenario: test_richard
 		When introduzco la palabra "Tsoft"
-		  And selecciono el resultado de la busqueda "Tsoft"
-		  Then se visualiza la pagina "https://www.tsoftglobal.com/"
+		And selecciono el resultado de la busqueda "Tsoft"
+		Then se visualiza la pagina "https://www.tsoftglobal.com/"
