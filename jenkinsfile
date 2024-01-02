@@ -1,62 +1,33 @@
-import groovy.json.*
 pipeline {
-  agent any
-  tools {
-    gradle "gr7"
-  }
-  environment {
-    //TESTPLAN = "${params.TESTPLAN}"
-    TESTPLAN = "PX-996"
-    TAG = "TEST_PX-995"
-  }
-  stages {
-    stage('CleanWorkspace') {
-      steps {
-        cleanWs()
-      }
+    agent any
+    
+
+    tools{ //herramientas utilizadas para la ejecucion, previamente configuradas
+        gradle 'gradle_7-6'
     }
-    stage('Git') {
-      steps {
-        git branch: 'main', url: 'https://github.com/RichardChamorro/repo_prueba.git'
-      }
+    environment { //parametros
+        TAG = "${params.TAG}"
     }
-    stage('Xvfb') {
-      steps {
-        sh 'Xvfb :99 -ac -screen 0 1280x1024x24 & export DISPLAY=$DISPLAY'
-      }
-    }
-    stage('Build') {
-      steps {
-        sh "gradle --version"
-        sh "java --version"
-        echo "$TESTPLAN"
-        echo "$TAG"
-        sh "pwd"
-        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE')
-        {
-            sh 'gradle runWithCucumber -P tags="@$TAG"'
+    
+    stages{  //etapas, se define el trabajo del pipeline dividido en bloques stage
+        stage('git clone'){
+            steps{
+                //clono el repositorio desde Github
+                git branch: 'master', url: 'https://github.com/mbelengonzalez168/frameworkgraddle.git'
+            }
         }
+        stage('Xvfb') {
+            steps {
+                sh 'Xvfb :99 -ac -screen 0 1280x1024x24 & export DISPLAY=$DISPLAY'
       }
     }
-    stage('Xray') {
-      steps {
-        echo "xray"
-        sh '''
-          token=$(curl -H "Content-Type: application/json" -X POST --data @"cloud_auth.json" https://xray.cloud.getxray.app/api/v2/authenticate| tr -d '"')
-          curl -H "Content-Type: multipart/form-data" -X POST -F info=@${WORKSPACE}/jira.json -F results=@${WORKSPACE}/results/Cucumber.json -H "Authorization: Bearer $token" https://xray.cloud.getxray.app/api/v2/import/execution/cucumber/multipart > log.txt
-          '''
-        sh "cat log.txt"
-      }
+        stage('exec gradle'){
+            steps{
+                //imprimo la version de graddle
+                sh 'gradle --version'
+                sh 'gradle runWithCucumber -P tags="@$TAG"' //${tag)} utilizacion del parametro
+                sh 'ls'
+            }
+        }
     }
-    stage('Jira') {
-      environment{
-        log = readJSON file: 'log.txt'
-        XRAYLOG = "${log.key}"
-      }
-      steps {
-        sh "chmod +x -R ${env.WORKSPACE}"
-        sh "IR=$XRAYLOG ./Attachment.sh IR"
-      }
-    }
-  }
 }
