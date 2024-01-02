@@ -3,7 +3,7 @@ pipeline {
     
 
     tools{ //herramientas utilizadas para la ejecucion, previamente configuradas
-        gradle 'gradle_7-6'
+        gradle 'gradle_7-0'
     }
     environment { //parametros
         TAG = "${params.TAG}"
