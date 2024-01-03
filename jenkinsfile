@@ -47,5 +47,26 @@ pipeline {
                 }
             }
         }
+
+        /*    stage('Xray') {
+        steps {
+            echo "xray"
+            sh '''
+            token=$(curl -H "Content-Type: application/json" -X POST --data @"cloud_auth.json" https://xray.cloud.getxray.app/api/v2/authenticate| tr -d '"')
+            curl -H "Content-Type: multipart/form-data" -X POST -F info=@${WORKSPACE}/info.json -F results=@${WORKSPACE}/results/Cucumber.json -H "Authorization: Bearer $token" https://xray.cloud.getxray.app/api/v2/import/execution/cucumber/multipart > log.txt
+            '''
+            sh "cat log.txt"
+        }
+    }
+    stage('Jira') {
+        environment{
+            log = readJSON file: 'log.txt'
+            XRAYLOG = "${log.key}"
+        }
+        steps {
+            sh "chmod +x -R ${env.WORKSPACE}"
+            sh "IR=$XRAYLOG ./Attachment.sh IR"
+        }
+    }*/
     }
 }

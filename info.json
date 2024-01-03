@@ -1,0 +1,15 @@
+{
+    "fields": {
+        "project":{
+            "id": "1002",
+            "key": "PX"
+        },
+        "summary": "Pruebas jenkins-Xray",
+        "issuetype": {
+            "name": "Test Execution"
+        }
+    },
+    "XrayFields": {
+        "testPlanKey": "PX-1004"
+    }
+}
