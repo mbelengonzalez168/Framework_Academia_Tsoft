@@ -29,5 +29,23 @@ pipeline {
                 sh 'ls'
             }
         }
+        stage('load test execution'){
+            steps {
+                sh 'bash tokenXray.sh'
+                script{
+                    switch(healenium){
+                        case "Si":
+                            sh 'cd results && export tempUrl=$cat url.txt) && curl -H \ Authorization: Basic 38ca04caa4b7dc9cd2e3af '
+                            break
+                        case "No":
+                            sh 'cd results && export tempUrl=$cat url.txt) && curl -H \ Authorization: Basic 38ca04caa4b7dc9cd2e3af '
+                            break
+                        default:
+                            echo 'problemas al cargar variable Healenium'
+                            break
+                    }
+                }
+            }
+        }
     }
 }
