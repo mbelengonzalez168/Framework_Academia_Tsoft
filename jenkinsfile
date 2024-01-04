@@ -38,7 +38,7 @@ pipeline {
                             sh 'cd results && export tempUrl=$cat url.txt) && curl -H \ Authorization: Basic QVRBVFQzeEZmR0YwMVdPa0wzamk1MWMzSnp0NjRnZ3otOHdCUXNjUkZ6Mm5XUG5QdExwMVlURXE0eU44ak4yWW5IdFN2WXJ5RGt4NzI1aFhDeDh6WWVGWDFnbEdzbXdwZ3Y4dF9lcUhjd1NScGNDc1p3ajlOWnUzbVRHRDZ6RF9LWFc0Q2IzMXRzbjh5MTVfVVRYdVJpeThtWnN2Z0RqV2ExRzluWXRkSkxWUFNxc29XZjJFcFA0PUFBRjM2MkZE '
                             break
                         case "No":
-                            sh 'cd results && export tempUrl=$cat url.txt) && curl -H \ Authorization: Basic QVRBVFQzeEZmR0YwMVdPa0wzamk1MWMzSnp0NjRnZ3otOHdCUXNjUkZ6Mm5XUG5QdExwMVlURXE0eU44ak4yWW5IdFN2WXJ5RGt4NzI1aFhDeDh6WWVGWDFnbEdzbXdwZ3Y4dF9lcUhjd1NScGNDc1p3ajlOWnUzbVRHRDZ6RF9LWFc0Q2IzMXRzbjh5MTVfVVRYdVJpeThtWnN2Z0RqV2ExRzluWXRkSkxWUFNxc29XZjJFcFA0PUFBRjM2MkZE '
+                            sh 'cd results && export tempUrl=$cat url.txt) && curl -H \ Authorization: QVRBVFQzeEZmR0YwMVdPa0wzamk1MWMzSnp0NjRnZ3otOHdCUXNjUkZ6Mm5XUG5QdExwMVlURXE0eU44ak4yWW5IdFN2WXJ5RGt4NzI1aFhDeDh6WWVGWDFnbEdzbXdwZ3Y4dF9lcUhjd1NScGNDc1p3ajlOWnUzbVRHRDZ6RF9LWFc0Q2IzMXRzbjh5MTVfVVRYdVJpeThtWnN2Z0RqV2ExRzluWXRkSkxWUFNxc29XZjJFcFA0PUFBRjM2MkZE '
                             break
                         default:
                             echo 'problemas al cargar variable Healenium'
@@ -47,26 +47,5 @@ pipeline {
                 }
             }
         }
-
-        /*    stage('Xray') {
-        steps {
-            echo "xray"
-            sh '''
-            token=$(curl -H "Content-Type: application/json" -X POST --data @"cloud_auth.json" https://xray.cloud.getxray.app/api/v2/authenticate| tr -d '"')
-            curl -H "Content-Type: multipart/form-data" -X POST -F info=@${WORKSPACE}/info.json -F results=@${WORKSPACE}/results/Cucumber.json -H "Authorization: Bearer $token" https://xray.cloud.getxray.app/api/v2/import/execution/cucumber/multipart > log.txt
-            '''
-            sh "cat log.txt"
-        }
-    }
-    stage('Jira') {
-        environment{
-            log = readJSON file: 'log.txt'
-            XRAYLOG = "${log.key}"
-        }
-        steps {
-            sh "chmod +x -R ${env.WORKSPACE}"
-            sh "IR=$XRAYLOG ./Attachment.sh IR"
-        }
-    }*/
     }
 }
