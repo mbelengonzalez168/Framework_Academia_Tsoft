@@ -19,8 +19,8 @@ pipeline {
         stage('Xvfb') {
             steps {
                 sh 'Xvfb :99 -ac -screen 0 1280x1024x24 & export DISPLAY=$DISPLAY'
-      }
-    }
+            }
+        }
         stage('exec gradle'){
             steps{
                 //imprimo la version de graddle
@@ -35,10 +35,10 @@ pipeline {
                 script {
                     switch(healenium) {
                         case "Si":
-                            sh '''cd results && export tempUrl=$(cat url.txt) && curl -H 'Authorization: Basic QVRBVFQzeEZmR0YwMVdPa0wzamk1MWMzSnp0NjRnZ3otOHdCUXNjUkZ6Mm5XUG5QdExwMVlURXE0eU44ak4yWW5IdFN2WXJ5RGt4NzI1aFhDeDh6WWVGWDFnbEdzbXdwZ3Y4dF9lcUhjd1NScGNDc1p3ajlOWnUzbVRHRDZ6RF9LWFc0Q2IzMXRzbjh5MTVfVVRYdVJpeThtWnN2Z0RqV2ExRzluWXRkSkxWUFNxc29XZjJFcFA0PUFBRjM2MkZE'
+                            sh 'cd results && export tempUrl=$(cat url.txt) && curl -H 'Authorization: Basic QVRBVFQzeEZmR0YwMVdPa0wzamk1MWMzSnp0NjRnZ3otOHdCUXNjUkZ6Mm5XUG5QdExwMVlURXE0eU44ak4yWW5IdFN2WXJ5RGt4NzI1aFhDeDh6WWVGWDFnbEdzbXdwZ3Y4dF9lcUhjd1NScGNDc1p3ajlOWnUzbVRHRDZ6RF9LWFc0Q2IzMXRzbjh5MTVfVVRYdVJpeThtWnN2Z0RqV2ExRzluWXRkSkxWUFNxc29XZjJFcFA0PUFBRjM2MkZE
                             break
                         case "No":
-                            sh '''cd results && export tempUrl=$(cat url.txt) && curl -H 'Authorization: Basic QVRBVFQzeEZmR0YwMVdPa0wzamk1MWMzSnp0NjRnZ3otOHdCUXNjUkZ6Mm5XUG5QdExwMVlURXE0eU44ak4yWW5IdFN2WXJ5RGt4NzI1aFhDeDh6WWVGWDFnbEdzbXdwZ3Y4dF9lcUhjd1NScGNDc1p3ajlOWnUzbVRHRDZ6RF9LWFc0Q2IzMXRzbjh5MTVfVVRYdVJpeThtWnN2Z0RqV2ExRzluWXRkSkxWUFNxc29XZjJFcFA0PUFBRjM2MkZE'
+                            sh 'cd results && export tempUrl=$(cat url.txt) && curl -H 'Authorization: Basic QVRBVFQzeEZmR0YwMVdPa0wzamk1MWMzSnp0NjRnZ3otOHdCUXNjUkZ6Mm5XUG5QdExwMVlURXE0eU44ak4yWW5IdFN2WXJ5RGt4NzI1aFhDeDh6WWVGWDFnbEdzbXdwZ3Y4dF9lcUhjd1NScGNDc1p3ajlOWnUzbVRHRDZ6RF9LWFc0Q2IzMXRzbjh5MTVfVVRYdVJpeThtWnN2Z0RqV2ExRzluWXRkSkxWUFNxc29XZjJFcFA0PUFBRjM2MkZE
                             break
                         default:
                             echo 'Problemas al cargar la variable Healenium'
