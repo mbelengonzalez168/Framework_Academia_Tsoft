@@ -32,16 +32,16 @@ pipeline {
         stage('load test execution'){
             steps {
                 sh 'bash tokenXray.sh'
-                script{
-                    switch(healenium){
+                script {
+                    switch(healenium) {
                         case "Si":
-                            sh 'cd results && export tempUrl=$(cat url.txt) && curl -H \ ´Authorization: Basic QVRBVFQzeEZmR0YwMVdPa0wzamk1MWMzSnp0NjRnZ3otOHdCUXNjUkZ6Mm5XUG5QdExwMVlURXE0eU44ak4yWW5IdFN2WXJ5RGt4NzI1aFhDeDh6WWVGWDFnbEdzbXdwZ3Y4dF9lcUhjd1NScGNDc1p3ajlOWnUzbVRHRDZ6RF9LWFc0Q2IzMXRzbjh5MTVfVVRYdVJpeThtWnN2Z0RqV2ExRzluWXRkSkxWUFNxc29XZjJFcFA0PUFBRjM2MkZE´ '
+                            sh '''cd results && export tempUrl=$(cat url.txt) && curl -H 'Authorization: Basic QVRBVFQzeEZmR0YwMVdPa0wzamk1MWMzSnp0NjRnZ3otOHdCUXNjUkZ6Mm5XUG5QdExwMVlURXE0eU44ak4yWW5IdFN2WXJ5RGt4NzI1aFhDeDh6WWVGWDFnbEdzbXdwZ3Y4dF9lcUhjd1NScGNDc1p3ajlOWnUzbVRHRDZ6RF9LWFc0Q2IzMXRzbjh5MTVfVVRYdVJpeThtWnN2Z0RqV2ExRzluWXRkSkxWUFNxc29XZjJFcFA0PUFBRjM2MkZE'
                             break
                         case "No":
-                            sh 'cd results && export tempUrl=$(cat url.txt) && curl -H \ ´Authorization: Basic QVRBVFQzeEZmR0YwMVdPa0wzamk1MWMzSnp0NjRnZ3otOHdCUXNjUkZ6Mm5XUG5QdExwMVlURXE0eU44ak4yWW5IdFN2WXJ5RGt4NzI1aFhDeDh6WWVGWDFnbEdzbXdwZ3Y4dF9lcUhjd1NScGNDc1p3ajlOWnUzbVRHRDZ6RF9LWFc0Q2IzMXRzbjh5MTVfVVRYdVJpeThtWnN2Z0RqV2ExRzluWXRkSkxWUFNxc29XZjJFcFA0PUFBRjM2MkZE´ '
+                            sh '''cd results && export tempUrl=$(cat url.txt) && curl -H 'Authorization: Basic QVRBVFQzeEZmR0YwMVdPa0wzamk1MWMzSnp0NjRnZ3otOHdCUXNjUkZ6Mm5XUG5QdExwMVlURXE0eU44ak4yWW5IdFN2WXJ5RGt4NzI1aFhDeDh6WWVGWDFnbEdzbXdwZ3Y4dF9lcUhjd1NScGNDc1p3ajlOWnUzbVRHRDZ6RF9LWFc0Q2IzMXRzbjh5MTVfVVRYdVJpeThtWnN2Z0RqV2ExRzluWXRkSkxWUFNxc29XZjJFcFA0PUFBRjM2MkZE'
                             break
                         default:
-                            echo 'problemas al cargar variable Healenium'
+                            echo 'Problemas al cargar la variable Healenium'
                             break
                     }
                 }
