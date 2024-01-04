@@ -33,7 +33,7 @@ pipeline {
             steps {
                 echo "xray"
                 echo "Generando token"
-                token=$(curl -H "Content-Type: application/json" -X POST --data @"cloud_auth.json" https://xray.cloud.getxray.app/api/v2/authenticate| tr -d '"')
+                sh 'token=$(curl -H "Content-Type: application/json" -X POST --data @"cloud_auth.json" https://xray.cloud.getxray.app/api/v2/authenticate| tr -d '"')'
                 echo "Token Generado: $token"
                 echo "Cargando TestExecution"
                 Testexecution=$(curl -H "Content-Type: multipart/form-data" -X POST -F info=@info.json -F results=@results/Cucumber.json -H "Authorization: Bearer $token" https://xray.cloud.getxray.app/api/v2/import/execution/cucumber/multipart)
