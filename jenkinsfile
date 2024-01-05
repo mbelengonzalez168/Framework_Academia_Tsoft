@@ -47,7 +47,7 @@ pipeline {
                 sh '''
                     sed -i "s|XRAY|${TESTPLAN}|g" $WORKSPACE/info.json
                     token=$(curl -H "Content-Type: application/json" -X POST --data @"cloud_auth.json" https://xray.cloud.getxray.app/api/v2/authenticate| tr -d '"')                
-                    testexecution= $(curl -H "Content-Type: multipart/form-data" -X POST -F info=@info.json -F results=@results/Cucumber.json -H "Authorization: Bearer $token" https://xray.cloud.getxray.app/api/v2/import/execution/cucumber/multipart)
+                    testexecution=$(curl -H "Content-Type: multipart/form-data" -X POST -F info=@info.json -F results=@results/Cucumber.json -H "Authorization: Bearer $token" https://xray.cloud.getxray.app/api/v2/import/execution/cucumber/multipart)
                     echo $testexecution
                     key=$(echo "$testexecution" | jq -r '.key')
                     echo $key
