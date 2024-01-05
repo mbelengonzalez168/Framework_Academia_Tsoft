@@ -1,7 +1,7 @@
 {
     "fields": {
         "project":{
-            "id": "1002",
+            "id": "10001",
             "key": "PX"
         },
         "summary": "Pruebas jenkins-Xray",
@@ -10,6 +10,6 @@
         }
     },
     "XrayFields": {
-        "testPlanKey": "PX-1004"
+        "testPlanKey": "XRAY"
     }
 }
