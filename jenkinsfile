@@ -37,7 +37,7 @@ pipeline {
                     token=$(curl -H "Content-Type: application/json" -X POST --data @"cloud_auth.json" https://xray.cloud.getxray.app/api/v2/authenticate| tr -d '"')
                     Testexecution=$(curl -H "Content-Type: multipart/form-data" -X POST -F info=@info.json -F results=@results/Cucumber.json -H "Authorization: Bearer $token" https://xray.cloud.getxray.app/api/v2/import/execution/cucumber/multipart)
                     key=$(echo "$Testexecution" | jq -r '.key')
-                    curl -D- -X POST "https://smoke-test-pj.atlassian.net/rest/api/3/issue/$key/attachments" -H 'X-Atlassian-Token: no-check' -F "file=@results/reporteQA.pdf" -H 'application/octet-stream' -H 'Authorization: Basic QVRBVFQzeEZmR0YwMVdPa0wzamk1MWMzSnp0NjRnZ3otOHdCUXNjUkZ6Mm5XUG5QdExwMVlURXE0eU44ak4yWW5IdFN2WXJ5RGt4NzI1aFhDeDh6WWVGWDFnbEdzbXdwZ3Y4dF9lcUhjd1NScGNDc1p3ajlOWnUzbVRHRDZ6RF9LWFc0Q2IzMXRzbjh5MTVfVVRYdVJpeThtWnN2Z0RqV2ExRzluWXRkSkxWUFNxc29XZjJFcFA0PUFBRjM2MkZE'
+                    curl -D- -X POST "https://smoke-test-pj.atlassian.net/rest/api/3/issue/$key/attachments" -H 'X-Atlassian-Token: no-check' -F "file=@results/reporteQA.pdf" -H 'application/octet-stream' -H 'Authorization: Basic YmVsZW4uZ29uemFsZXpAdHNvZnRnbG9iYWwuY29tOkFUQVRUM3hGZkdGMDFXT2tMM2ppNTFjM0p6dDY0Z2d6LTh3QlFzY1JGejJuV1BuUHRMcDFZVEVxNHlOOGpOMlluSHRTdllyeURreDcyNWhYQ3g4elllRlgxZ2xHc213cGd2OHRfZXFIY3dTUnBjQ3Nad2o5Tlp1M21UR0Q2ekRfS1hXNENiMzF0c244eTE1X1VUWHVSaXk4bVpzdmdEaldhMUc5bll0ZEpMVlBTcXNvV2YyRXBQND1BQUYzNjJGRA=='
                     '''
             }
         }
