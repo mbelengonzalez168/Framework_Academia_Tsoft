@@ -24,6 +24,7 @@ pipeline {
         stage('exec gradle'){
             steps{
                 //imprimo la version de graddle
+                sh 'echo ${TAG}'
                 sh 'gradle --version'
                 sh 'gradle runWithCucumber -P tags="@$TAG"' //${tag)} utilizacion del parametro
                 sh 'ls'
