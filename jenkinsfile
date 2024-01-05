@@ -11,7 +11,9 @@ pipeline {
     
     stages{  //etapas, se define el trabajo del pipeline dividido en bloques stage
         stage('limpiar espacio de trabajo'){
-            cleanWs()
+            steps{
+                cleanWs()
+            }
         }
         stage('git clone'){
             steps{
