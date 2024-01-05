@@ -10,6 +10,9 @@ pipeline {
     }
     
     stages{  //etapas, se define el trabajo del pipeline dividido en bloques stage
+        stage('limpiar espacio de trabajo'){
+            cleanWs()
+        }
         stage('git clone'){
             steps{
                 //clono el repositorio desde Github
