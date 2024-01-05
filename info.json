@@ -9,7 +9,7 @@
             "name": "Test Execution"
         }
     },
-    "XrayFields": {
+    "xrayFields": {
         "testPlanKey": "XRAY"
     }
 }
