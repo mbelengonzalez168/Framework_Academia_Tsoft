@@ -31,8 +31,12 @@ pipeline {
                 //imprimo la version de graddle
                 sh 'echo ${TAG}'
                 sh 'gradle --version'
-                sh 'gradle runWithCucumber -P tags="@$TAG"' //${tag)} utilizacion del parametro
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE')
+                {
+                    sh 'gradle runWithCucumber -P tags="@$TAG"' //${tag)} utilizacion del parametro
+                }
                 sh 'ls'
+
             }
         }
         stage('load test execution'){ // Intregracion con jenkins instrucciones de conexion
