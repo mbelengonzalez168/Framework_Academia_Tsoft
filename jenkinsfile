@@ -51,7 +51,7 @@ pipeline {
                     echo $testexecution
                     key=$(echo "$testexecution" | jq -r '.key')
                     echo $key
-                    curl -D- -X POST "https://smoke-test-pj.atlassian.net/rest/api/3/issue/$key/attachments" -H 'X-Atlassian-Token: no-check' -F "file=@results/reporteQA.pdf" -H 'application/octet-stream' -H 'Authorization: Basic YmVsZW4uZ29uemFsZXpAdHNvZnRnbG9iYWwuY29tOkFUQVRUM3hGZkdGMEg2dmpnTllMV1hhdkdnTDlXNmRxbUlFUDA5TE9vcW1SSThHdUlEY1RGVVl4TlVDbTdsWGFnTU1WaGx2eHV0TlVPTmQzdVlSQ0R1aDYyZDA3THBYSTRHUllwVFdXdFprMHFuaHZOVmk0amNnVUdYVDZJTlYyT0ZwUXpTN29oSTBhbDBoemZocW00WTEyeEE1ZmRXV3loa3FpN0d1WWEwelRnQ055RmI5T1Z4Yz00Qzg1REVCOQo='
+                    curl -D- -X POST "https://smoke-test-pj.atlassian.net/rest/api/3/issue/$key/attachments" -H 'X-Atlassian-Token: no-check' -F "file=@results/reporteQA.pdf" -H 'application/octet-stream' -H 'Authorization: Basic YmVsZW4uZ29uemFsZXpAdHNvZnRnbG9iYWwuY29tOkFUQVRUM3hGZkdGMEg2dmpnTllMV1hhdkdnTDlXNmRxbUlFUDA5TE9vcW1SSThHdUlEY1RGVVl4TlVDbTdsWGFnTU1WaGx2eHV0TlVPTmQzdVlSQ0R1aDYyZDA3THBYSTRHUllwVFdXdFprMHFuaHZOVmk0amNnVUdYVDZJTlYyT0ZwUXpTN29oSTBhbDBoemZocW00WTEyeEE1ZmRXV3loa3FpN0d1WWEwelRnQ055RmI5T1Z4Yz00Qzg1REVCOQ=='
                     sed -i "s|USER|${USERID}|g" $WORKSPACE/info.json
                     '''
             }
